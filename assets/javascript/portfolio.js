@@ -163,7 +163,7 @@
 // 2bdc619693544329841a3196dca3f6c0
 
     (function () {
-        $.getJSON('https://api.ipgeolocation.io/ipgeo?apiKey=', function (data) { 
+        $.getJSON('https://api.ipgeolocation.io/ipgeo?apiKey=a5204ff0cf7147e99d1b6de40ad8077b', function (data) { 
 
             writeLine(["Authenticating...", "Attempting to grant access to <span style='font-size: 14px; color: #3b66cc;'>[6ha.net]</span>..."], 30, function () {
 
