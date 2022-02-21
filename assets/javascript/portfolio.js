@@ -28,8 +28,8 @@
             },
 
             {
-                name: 'discord',
-                link: 'https://discord.gg/fRdWxdPhSu'
+                name: 'name mc',
+                link: 'https://mine.ly/_oq'
             },
             
             {
