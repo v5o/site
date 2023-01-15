@@ -16,7 +16,7 @@ function loaded(){
 
 var x = 0;
 
-var titleText = [ "$ 6ha.net", "$ 6ha.ne", "$ 6ha.n", "$ 6ha.", "$ 6ha", "$ 6h", "$ 6", "$ 6h", "$ 6ha", "$ 6ha.", "$ 6ha.n", "$ 6ha.ne", "$ 6ha.net"];
+var titleText = [ "$ 0f.vc", "$ 0f.v", "$ 0f.", "$ 0f", "$ 0", "$ 0f", "$ 0f.", "$ 0f.v", "$ 0f.vc"];
 
 function loop(){
 
