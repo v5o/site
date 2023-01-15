@@ -15,31 +15,31 @@
 
 
 		    {
-                name: 'insta',
-                link: 'https://instagram.com/qijz'
+                name: 'gram',
+                link: 'https://instagram.com/r.yqn'
             },
 		    {
-                name: 'twitter',
+                name: 'twit',
                 link: 'https://twitter.com/o0ff'
             },
 		    {
-                name: 'last.fm',
-                link: 'https://www.last.fm/user/5g'
+                name: 'tiktok',
+                link: 'https://www.tiktok.com/@cf'
             },
 
             {
-                name: 'name mc',
-                link: 'https://mine.ly/_oq'
+                name: 'mc',
+                link: 'https://mine.ly/landfrom'
             },
             
             {
-                name: 'soundcloud',
-                link: 'https://soundcloud.com/o0y'
+                name: 'sc',
+                link: 'https://soundcloud.com/pitfall'
             },
             
             {
-                name: 'solo',
-                link: 'https://solo.to/iy'
+                name: 'ogu',
+                link: 'https://ogu.gg/su'
             },
             
 
@@ -53,7 +53,7 @@
             link = $('#marquee').children('a').last();
 
             if (i != links.length - 1)
-                $('#marquee').append(' <img class="emoticon" src="assets/others/mgh_17.png"> ');
+                $('#marquee').append(' <img class="emoticon" src="assets/others/luma.png"> ');
         }
 
         if (window.mobileAndTabletCheck()) {
