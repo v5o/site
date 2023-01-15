@@ -9,11 +9,11 @@ var _app = function () {
     this.shouldIgnoreVideo = false;
     this.effects = ["bounce", "flash", "pulse", "rubberBand", "shake", "swing", "tada", "wobble", "jello"];
     this.brandDescription = [
-        "ry#0003 - 696434555648737381 ", 
-        "minecon 2012 attendee ", 
-        "mentally based ", 
-        "♪ midwxst - trying ",
-        "$ 6ha " ,
+        "ryan#4444 ", 
+        " ", 
+        " ", 
+        "♪ diegointhedark - nosebleed ",
+        "$ 0f.vc " ,
     ];
 
 
