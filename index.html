@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><head>
+<html>
+<head>
     <title>$ 0f.vc</title>
     <meta charset="UTF-8">
     <script src="assets\me.js"></script>
@@ -24,8 +25,6 @@
 <body>
     <script type="text/javascript" src="assets\javascript\app.js"></script>
 
-    
-
     <div class="container" style="">
         <h1 class="brand-header animated tada">
             <a hrf="" target="_BLANK">0f.vc</a>
@@ -36,7 +35,7 @@
 
     <div class="marquee-container animated zoomIn" style="visibility: visible;">
          <div class="marquee-container animated zoomIn" style="visibility: visible;">
-<pre>|<div id="marquee"><div style="width: 100000px; margin-left: 420px; animation: 35.6269s linear 1s 1 normal none running marqueeAnimation-3463204;" class="js-marquee-wrapper"><div class="js-marquee" style="margin-right: 420px; float: left;"><a href="https://instagram.com/qijz" target="_BLANK">ig</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.tiktok.com/@graveewalker" target="_BLANK">tt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.snapchat.com/add/r%d9%8f%d9%8f" target="_BLANK">snap</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.youtube.com/@g-re/" target="_BLANK">yt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://soundcloud.com/pitfall" target="_BLANK">sc</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://oguser.com/fi/" target="_BLANK">ogu</a></div><div class="js-marquee" style="margin-right: 420px; float: left;"><a href="https://instagram.com/qijz" target="_BLANK">ig</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.tiktok.com/@graveewalker" target="_BLANK">tt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.snapchat.com/add/r%d9%8f%d9%8f" target="_BLANK">snap</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.youtube.com/@g-re/" target="_BLANK">yt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://soundcloud.com/pitfall" target="_BLANK">sc</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://oguser.com/fi/" target="_BLANK">ogu</a></div><style>@-webkit-keyframes marqueeAnimation-3463204  { 100%  {margin-left:-974px}}</style></div></div>|</pre>
+            <pre>|<div id="marquee"><div style="width: 100000px; margin-left: 420px; animation: 35.6269s linear 1s 1 normal none running marqueeAnimation-3463204;" class="js-marquee-wrapper"><div class="js-marquee" style="margin-right: 420px; float: left;"><a href="https://instagram.com/qijz" target="_BLANK">ig</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.tiktok.com/@graveewalker" target="_BLANK">tt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.snapchat.com/add/r%d9%8f%d9%8f" target="_BLANK">snap</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.youtube.com/@g-re/" target="_BLANK">yt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://soundcloud.com/pitfall" target="_BLANK">sc</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://oguser.com/fi/" target="_BLANK">ogu</a></div><div class="js-marquee" style="margin-right: 420px; float: left;"><a href="https://instagram.com/qijz" target="_BLANK">ig</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.tiktok.com/@graveewalker" target="_BLANK">tt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.snapchat.com/add/r%d9%8f%d9%8f" target="_BLANK">snap</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.youtube.com/@g-re/" target="_BLANK">yt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://soundcloud.com/pitfall" target="_BLANK">sc</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://oguser.com/fi/" target="_BLANK">ogu</a></div><style>@-webkit-keyframes marqueeAnimation-3463204  { 100%  {margin-left:-974px}}</style></div></div>|</pre>
     </div>
 
     <div class="background" style="">
@@ -44,44 +43,59 @@
 
         <audio id="audio" loop="">
             <source src="assets\others\the race.mp4" type="audio/mp4">
-            <script>
-                var audio = document.getElementById("audio");
-
-                app.audioElement = audio;
-                app.audioElement.volume = 1;
-            </script>
         </audio>
 
-        <video id="background" loop="">
-            <source src="assets\others\the race.mp4" type="video/mp4">
-            <script>
-                var video = document.getElementById("background");
-
-                app.videoElement = video;
-                app.videoElement.volume = 0;
-
-                document.onmouseover = function(){
-                    document.onclick = function() {
-                    app.videoElement.play();
-                    app.audioElement.play();
-                    };
-                };
-                
-            </script>
-        </video>
+        <div id="background">
+            <!-- Fallback image -->
+            <img src="assets/others/background_image.jpg" alt="Background Image">
+            <!-- Video source -->
+            <video loop="" autoplay="" muted="">
+                <source src="assets/others/the_race.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
 
-    
+    <script>
+        var audio = document.getElementById("audio");
+        app.audioElement = audio;
+        app.audioElement.volume = 1;
 
+        document.addEventListener("DOMContentLoaded", function() {
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Remove autoplay attribute from video
+                var video = document.getElementById("background").querySelector("video");
+                video.removeAttribute("autoplay");
+
+                // Remove autoplay from audio
+                app.audioElement.removeAttribute("autoplay");
+
+                // Display play button
+                var playButton = document.createElement("button");
+                playButton.textContent = "Play";
+                playButton.id = "playButton";
+
+                playButton.addEventListener("click", function() {
+                    video.play();
+                    app.audioElement.play();
+                    playButton.style.display = "none"; // Hide the play button after clicking
+                });
+
+                document.body.appendChild(playButton);
+            } else {
+                // Play video only if not on a mobile device
+                app.videoElement.play();
+                app.audioElement.play();
+            }
+        });
+    </script>
 
     <script type="text/javascript" src="assets\javascript\lib\jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="assets\javascript\lib\jquery.marquee.min.js"></script>
     <script type="text/javascript" src="assets\javascript\lib\jquery.cookie.min.js"></script>
     <script type="text/javascript" src="assets\javascript\lib\typed.min.js"></script>
     <script type="text/javascript" src="assets\javascript\portfolio.js"></script>
-
-
-
-
-
-</body><!-- fuck you szn. ~crazy --></html>
+</body>
+</html>
