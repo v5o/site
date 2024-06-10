@@ -49,53 +49,35 @@
             <!-- Fallback image -->
             <img src="assets/others/background_image.jpg" alt="Background Image">
             <!-- Video source -->
-            <video loop="" autoplay="" muted="">
+            <video loop="" muted="">
                 <source src="assets/others/the_race.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
     </div>
 
-    <script>
-        var audio = document.getElementById("audio");
-        app.audioElement = audio;
-        app.audioElement.volume = 1;
-
-        document.addEventListener("DOMContentLoaded", function() {
-            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-            if (isMobile) {
-                // Remove autoplay attribute from video
-                var video = document.getElementById("background").querySelector("video");
-                video.removeAttribute("autoplay");
-
-                // Remove autoplay from audio
-                app.audioElement.removeAttribute("autoplay");
-
-                // Display play button
-                var playButton = document.createElement("button");
-                playButton.textContent = "Play";
-                playButton.id = "playButton";
-
-                playButton.addEventListener("click", function() {
-                    video.play();
-                    app.audioElement.play();
-                    playButton.style.display = "none"; // Hide the play button after clicking
-                });
-
-                document.body.appendChild(playButton);
-            } else {
-                // Play video only if not on a mobile device
-                app.videoElement.play();
-                app.audioElement.play();
-            }
-        });
-    </script>
-
     <script type="text/javascript" src="assets\javascript\lib\jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="assets\javascript\lib\jquery.marquee.min.js"></script>
     <script type="text/javascript" src="assets\javascript\lib\jquery.cookie.min.js"></script>
     <script type="text/javascript" src="assets\javascript\lib\typed.min.js"></script>
     <script type="text/javascript" src="assets\javascript\portfolio.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            var video = document.getElementById("background").querySelector("video");
+            var img = document.getElementById("background").querySelector("img");
+
+            if (isMobile) {
+                // If mobile device, hide video and show fallback image
+                video.style.display = "none";
+                img.style.display = "block";
+            } else {
+                // If desktop, hide fallback image and play video
+                img.style.display = "none";
+                video.play();
+            }
+        });
+    </script>
 </body>
 </html>
