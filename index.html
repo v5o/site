@@ -20,6 +20,16 @@
     <link rel="shortcut icon" href="assets\icons\favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="assets\stylesheets\stylesheet.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        #volume-slider {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            z-index: 1000;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,13 +54,15 @@
             <source src="assets\others\the race.mp4" type="audio/mp4">
         </audio>
 
-        <video id="background" loop="" autoplay="" muted="">
+        <video id="background" loop="" autoplay="">
             <source src="assets\others\the race.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
         <img id="fallback-image" src="assets/others/background_image.jpg" alt="Background Image" style="display: none;">
     </div>
+
+    <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
 
     <script type="text/javascript" src="assets\javascript\lib\jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="assets\javascript\lib\jquery.marquee.min.js"></script>
@@ -60,13 +72,26 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var marquee = document.getElementById("marquee");
-            var marqueeContent = '<div style="width: 100000px; margin-left: 420px; animation: 35.6269s linear 1s infinite normal none running marqueeAnimation-3463204;" class="js-marquee-wrapper"><div class="js-marquee" style="margin-right: 420px; float: left;"><a href="https://instagram.com/qijz" target="_BLANK">ig</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.tiktok.com/@graveewalker" target="_BLANK">tt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.snapchat.com/add/r%d9%8f%d9%8f" target="_BLANK">snap</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.youtube.com/@g-re/" target="_BLANK">yt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://soundcloud.com/pitfall" target="_BLANK">sc</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://oguser.com/fi/" target="_BLANK">ogu</a></div></div>';
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            var video = document.getElementById("background");
+            var img = document.getElementById("fallback-image");
 
-            // Repeat the marquee content forever
-            for (var i = 0; i < 100; i++) {
-                marquee.innerHTML += marqueeContent;
+            if (isMobile) {
+                video.style.display = "none";
+                img.style.display = "block";
+            } else {
+                video.style.display = "block";
+                img.style.display = "none";
             }
+
+            var volumeSlider = document.getElementById("volume-slider");
+            var videoElement = document.getElementById("background");
+            var audioElement = document.getElementById("audio");
+
+            volumeSlider.addEventListener("input", function() {
+                videoElement.volume = this.value;
+                audioElement.volume = this.value;
+            });
         });
     </script>
 </body>
