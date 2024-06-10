@@ -24,12 +24,12 @@
             },
 		    {
                 name: 'tiktok',
-                link: 'https://www.tiktok.com/@cf'
+                link: 'https://www.tiktok.com/@graveewalker'
             },
 
             {
                 name: 'mc',
-                link: 'https://mine.ly/landfrom'
+                link: 'https://mine.ly/landform'
             },
             
             {
@@ -39,7 +39,7 @@
             
             {
                 name: 'ogu',
-                link: 'https://ogu.gg/su'
+                link: 'https://oguser.com/fi'
             },
             
 
