@@ -45,12 +45,10 @@
             <source src="assets\others\the race.mp4" type="audio/mp4">
         </audio>
 
-        <video id="background" loop="" autoplay="" muted="">
+        <video id="background" loop="" autoplay="">
             <source src="assets\others\the race.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-
-        <img id="fallback-image" src="assets/others/background_image.jpg" alt="Background Image" style="display: none;">
     </div>
 
     <script type="text/javascript" src="assets\javascript\lib\jquery-3.1.1.min.js"></script>
@@ -61,17 +59,8 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             var video = document.getElementById("background");
-            var img = document.getElementById("fallback-image");
-
-            if (isMobile) {
-                video.style.display = "none";
-                img.style.display = "block";
-            } else {
-                video.style.display = "block";
-                img.style.display = "none";
-            }
+            video.play();
         });
     </script>
 </body>
