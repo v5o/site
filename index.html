@@ -20,32 +20,6 @@
     <link rel="shortcut icon" href="assets\icons\favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="assets\stylesheets\stylesheet.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-    <style>
-        #background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        #background video {
-            display: none;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        #background img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
 </head>
 
 <body>
@@ -60,22 +34,23 @@
     </div>
 
     <div class="marquee-container animated zoomIn" style="visibility: visible;">
-         <div class="marquee-container animated zoomIn" style="visibility: visible;">
+        <div class="marquee-container animated zoomIn" style="visibility: visible;">
             <pre>|<div id="marquee"><div style="width: 100000px; margin-left: 420px; animation: 35.6269s linear 1s 1 normal none running marqueeAnimation-3463204;" class="js-marquee-wrapper"><div class="js-marquee" style="margin-right: 420px; float: left;"><a href="https://instagram.com/qijz" target="_BLANK">ig</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.tiktok.com/@graveewalker" target="_BLANK">tt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.snapchat.com/add/r%d9%8f%d9%8f" target="_BLANK">snap</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.youtube.com/@g-re/" target="_BLANK">yt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://soundcloud.com/pitfall" target="_BLANK">sc</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://oguser.com/fi/" target="_BLANK">ogu</a></div><div class="js-marquee" style="margin-right: 420px; float: left;"><a href="https://instagram.com/qijz" target="_BLANK">ig</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.tiktok.com/@graveewalker" target="_BLANK">tt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.snapchat.com/add/r%d9%8f%d9%8f" target="_BLANK">snap</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://www.youtube.com/@g-re/" target="_BLANK">yt</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://soundcloud.com/pitfall" target="_BLANK">sc</a> <img class="emoticon" src="assets/others/luma.png"> <a href="https://oguser.com/fi/" target="_BLANK">ogu</a></div><style>@-webkit-keyframes marqueeAnimation-3463204  { 100%  {margin-left:-974px}}</style></div></div>|</pre>
     </div>
 
-    <div class="background" id="background">
+    <div class="background" style="">
         <div id="pattern"></div>
 
         <audio id="audio" loop="">
             <source src="assets\others\the race.mp4" type="audio/mp4">
         </audio>
 
-        <img src="assets/others/background_image.jpg" alt="Background Image">
-        <video loop="" muted="">
-            <source src="assets/others/the_race.mp4" type="video/mp4">
+        <video id="background" loop="" autoplay="" muted="">
+            <source src="assets\others\the race.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+
+        <img id="fallback-image" src="assets/others/background_image.jpg" alt="Background Image" style="display: none;">
     </div>
 
     <script type="text/javascript" src="assets\javascript\lib\jquery-3.1.1.min.js"></script>
@@ -87,8 +62,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            var video = document.querySelector("#background video");
-            var img = document.querySelector("#background img");
+            var video = document.getElementById("background");
+            var img = document.getElementById("fallback-image");
 
             if (isMobile) {
                 video.style.display = "none";
@@ -96,7 +71,6 @@
             } else {
                 video.style.display = "block";
                 img.style.display = "none";
-                video.play();
             }
         });
     </script>
