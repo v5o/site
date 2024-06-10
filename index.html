@@ -60,7 +60,11 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var video = document.getElementById("background");
-            video.play();
+            video.play().catch(function(error) {
+                // Video autoplay failed, show the fallback image
+                var fallbackImage = document.getElementById("fallback-image");
+                fallbackImage.style.display = "block";
+            });
         });
     </script>
 </body>
