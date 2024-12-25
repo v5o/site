@@ -15,15 +15,15 @@
 
 
 		    {
-                name: 'gram',
+                name: 'ig',
                 link: 'https://instagram.com/yarnserene'
             },
 		    {
-                name: 'twit',
-                link: 'https://twitter.com/o0ff'
+                name: 'x',
+                link: 'https://x.com/o0ff'
             },
 		    {
-                name: 'tiktok',
+                name: 'tt',
                 link: 'https://www.tiktok.com/@yarnheartz'
             },
 
