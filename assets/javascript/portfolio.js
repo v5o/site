@@ -16,7 +16,7 @@
 
 		    {
                 name: 'gram',
-                link: 'https://instagram.com/r.yqn'
+                link: 'https://instagram.com/yarnserene'
             },
 		    {
                 name: 'twit',
@@ -24,12 +24,12 @@
             },
 		    {
                 name: 'tiktok',
-                link: 'https://www.tiktok.com/@graveewalker'
+                link: 'https://www.tiktok.com/@yarnheartz'
             },
 
             {
                 name: 'mc',
-                link: 'https://mine.ly/landform'
+                link: 'https://mine.ly/dsv'
             },
             
             {
