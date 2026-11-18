@@ -36,7 +36,8 @@
     setVolume(0);
 
     // Typing tagline
-    var lines = ["yarnserene", "♪ diegointhedark - 500pts", "$ yarnserene.com"];
+    var song = (window.currentVideo && window.currentVideo.title) || "diegointhedark - 500pts";
+    var lines = ["yarnserene", "♪ " + song, "$ yarnserene.com"];
     var li = 0, ci = lines[0].length, deleting = true;
     function tick() {
         var text = lines[li];
