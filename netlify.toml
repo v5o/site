@@ -1,8 +1,21 @@
 [build]
   publish = "."
-  # Stamp asset URLs with the commit so Cloudflare/browser caches can't serve
-  # stale CSS/JS alongside fresh HTML after a deploy.
-  command = "sed -i \"s/__BUILD_ID__/${COMMIT_REF:-dev}/g\" index.html"
+  # Stamps asset URLs with the commit (cache busting) and builds the music
+  # video playlist from the /videos folder. See scripts/build.mjs.
+  command = "node scripts/build.mjs"
 
 [build.environment]
   NODE_VERSION = "26"
+
+# Video files are big and named after their content; let browsers/CDN cache them.
+[[headers]]
+  for = "/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Don't publish the build script itself.
+[[redirects]]
+  from = "/scripts/*"
+  to = "/404"
+  status = 404
+  force = true

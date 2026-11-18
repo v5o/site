@@ -24,7 +24,7 @@ html {
 
 body {
 	min-height: 100vh;
-	min-height: 100dvh;
+	min-height: 100lvh;
 	overflow: hidden;
 	background: #000;
 	color: #e4e3e3;
@@ -33,7 +33,17 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-.background { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: #000 url("../others/poster.jpg") center / cover no-repeat; }
+/* Bleed the video under the phone's status bar and browser toolbars
+   (no black bars at the top/bottom on iOS/Android). */
+.background {
+	position: fixed; z-index: -1; overflow: hidden;
+	left: 0; right: 0;
+	top: calc(-1 * env(safe-area-inset-top, 0px));
+	bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+	min-height: calc(100vh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+	min-height: calc(100lvh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+	background: #000 center / cover no-repeat;
+}
 #background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); }
 #shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,.15), rgba(0,0,0,.55)); }
 #pattern { position: absolute; inset: 0; background: url("../others/dot.png") repeat; }
@@ -78,7 +88,24 @@ a { color: inherit; text-decoration: none; }
 	transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
 }
 .social svg { width: 20px; height: 20px; fill: currentColor; }
-.social-text { font-weight: 700; font-size: 14px; }
+/* OGUsers logo: the PNG is used as a mask so it takes the same color/hover
+   treatment as the SVG icons, with a brushed-metal sheen on top. */
+.social-logo {
+	display: block;
+	background: linear-gradient(115deg, #ffffff 0%, #c9c9cf 38%, #f6f6f8 52%, #a9a9b0 70%, #e6e6ea 100%);
+	background-size: 220% 100%;
+	background-position: 0% 50%;
+	-webkit-mask: var(--logo) center / contain no-repeat;
+	mask: var(--logo) center / contain no-repeat;
+	filter: drop-shadow(0 1px 1px rgba(0,0,0,.35));
+	transition: background-position .6s ease, filter .2s ease;
+}
+.social-logo--og { --logo: url("../icons/ogusers.png"); width: 26px; height: 15px; }
+.social:hover .social-logo, .social:focus-visible .social-logo {
+	background-image: linear-gradient(115deg, #fff 0%, var(--brand) 35%, #fff 52%, var(--brand) 70%, #fff 100%);
+	background-position: 100% 50%;
+	filter: drop-shadow(0 0 6px var(--brand));
+}
 .social:hover, .social:focus-visible {
 	transform: translateY(-3px);
 	color: var(--brand);
