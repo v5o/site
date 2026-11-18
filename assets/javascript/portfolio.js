@@ -57,26 +57,12 @@
         }
 
         if (window.mobileAndTabletCheck()) {
-            $("#background").replaceWith('<div id="background" style="background-image: url(https://staymad.club/assets/icons/favicon.png"></div>');
-
+            // Phones/tablets show the static background image instead of the video
             app.shouldIgnoreVideo = true;
         }
-
-        app.titleChanger();
-        app.iconChanger([
-            "assets/icons/roses/rose1.jpg",
-            "assets/icons/roses/rose2.jpg",
-            "assets/icons/roses/rose3.jpg",
-            "assets/icons/roses/rose4.jpg",
-            "assets/icons/roses/rose5.jpg",
-            "assets/icons/roses/rose6.jpg",
-            "assets/icons/roses/rose7.jpg",
-            "assets/icons/roses/rose8.jpg",
-            "assets/icons/roses/rose1.jpg",
-        ]);
     });
 
-    if ($.cookie('videoTime')) {
+    if ($.cookie('videoTime') && app.videoElement && app.audioElement) {
         app.videoElement.currentTime = $.cookie('videoTime');
         app.audioElement.currentTime = $.cookie('videoTime');
     }

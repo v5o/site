@@ -14,6 +14,9 @@ html {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -84,6 +87,9 @@ pre {
 	left: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+	width: max-content;
+	max-width: 92vw;
+	white-space: nowrap;
 }
 
 #brand {
@@ -99,6 +105,7 @@ pre {
 
 #marquee {
 	width: 420px;
+	max-width: 90vw;
 	overflow: hidden;
 	display: inline-block;
 	margin-bottom: -4.5px;
@@ -169,4 +176,35 @@ pre {
 
 ::-webkit-scrollbar {
 	width: 0;
+}
+
+/* Phones and small screens */
+@media only screen and (max-width: 600px) {
+	.brand-header {
+		font-size: clamp(1.5rem, 9vw, 2rem);
+	}
+
+	.container p {
+		font-size: 0.95rem;
+	}
+
+	.marquee-container {
+		bottom: calc(8% + env(safe-area-inset-bottom, 0px));
+		padding: 0 12px;
+		box-sizing: border-box;
+	}
+
+	/* Let the social links wrap onto extra lines on narrow screens
+	   instead of being clipped by the fixed-width box */
+	#marquee {
+		width: auto;
+		max-width: 100%;
+		white-space: normal;
+		line-height: 2;
+		font-size: 16px;
+	}
+
+	#marquee a {
+		padding: 4px 2px;
+	}
 }
