@@ -1,5 +1,8 @@
 [build]
   publish = "."
+  # Stamp asset URLs with the commit so Cloudflare/browser caches can't serve
+  # stale CSS/JS alongside fresh HTML after a deploy.
+  command = "sed -i \"s/__BUILD_ID__/${COMMIT_REF:-dev}/g\" index.html"
 
 [build.environment]
   NODE_VERSION = "26"
