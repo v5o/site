@@ -24,7 +24,7 @@
             },
 		    {
                 name: 'tt',
-                link: 'https://www.tiktok.com/@yarnheartz'
+                link: 'https://www.tiktok.com/@yarnserene'
             },
 
             {
@@ -39,7 +39,7 @@
             
             {
                 name: 'ogu',
-                link: 'https://oguser.com/fi'
+                link: 'https://oguser.com/yarns'
             },
             
 
