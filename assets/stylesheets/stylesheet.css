@@ -58,15 +58,6 @@ a { color: inherit; text-decoration: none; }
 .typed-cursor { animation: blink 1s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
-.tada { animation: tada 1s both; }
-@keyframes tada {
-	0% { transform: scale(1); }
-	10%, 20% { transform: scale(.9) rotate(-3deg); }
-	30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
-	40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
-	100% { transform: scale(1); }
-}
-
 .bottom {
 	position: fixed; left: 0; right: 0;
 	bottom: calc(24px + env(safe-area-inset-bottom, 0px));
@@ -125,6 +116,48 @@ a { color: inherit; text-decoration: none; }
 }
 .social:hover::after, .social:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
 
+/* Discord / Telegram / email: three equal rectangles stacked above the
+   square icons and stretched to the same total width. */
+.link-stack { display: flex; flex-direction: column; align-items: stretch; gap: 12px; width: max-content; max-width: 100%; }
+.wide-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.social.wide {
+	width: auto; height: 46px;
+	display: flex; align-items: center; justify-content: center; gap: 8px;
+	padding: 0 10px;
+	font: inherit; font-size: 14px; cursor: pointer;
+	-webkit-appearance: none; appearance: none;
+}
+.social.wide span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.social.wide svg { flex: none; }
+.social svg.outline { fill: none; }
+.social.copied { color: var(--brand); border-color: var(--brand); }
+
+/* Right-click: the lock icon pops up at the cursor */
+.lock-pop {
+	position: absolute; width: 16px; height: 16px; z-index: 20;
+	pointer-events: none; transform: translate(-50%, -50%);
+	animation: lock-pop .6s ease-out forwards;
+}
+@keyframes lock-pop {
+	0% { opacity: 0; transform: translate(-50%, -50%) scale(.6); }
+	20% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+	70% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+	100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+.toast {
+	position: fixed; left: 50%; top: calc(18px + env(safe-area-inset-top, 0px));
+	transform: translate(-50%, -10px); opacity: 0; pointer-events: none;
+	padding: 7px 14px; border-radius: 10px;
+	font-size: 14px; color: #fff; white-space: nowrap;
+	background: rgba(0,0,0,.75);
+	border: 1px solid rgba(255,255,255,.16);
+	backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+	transition: opacity .25s ease, transform .25s ease;
+	z-index: 10;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
 .volume {
 	display: flex; align-items: center; gap: 10px;
 	padding: 8px 16px 8px 10px;
@@ -155,10 +188,15 @@ a { color: inherit; text-decoration: none; }
 #volume-slider:hover::-webkit-slider-thumb { transform: scale(1.2); }
 
 @media (max-width: 600px) {
-	.social { width: 42px; height: 42px; }
+	/* keep all 8 squares on one row, shrinking to fit narrow phones */
+	.socials { flex-wrap: nowrap; gap: 8px; }
+	.link-stack, .wide-links { gap: 8px; }
+	.social { width: min(42px, calc((100vw - 24px - 56px) / 8)); height: min(42px, calc((100vw - 24px - 56px) / 8)); flex: none; }
+	.social.wide { height: 44px; font-size: 13px; padding: 0 6px; gap: 6px; }
 	#volume-slider { width: 120px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.tada, .typed-cursor { animation: none; }
+	.lock-pop { animation-duration: .01s; animation-delay: .5s; }
+	.typed-cursor { animation: none; }
 }
