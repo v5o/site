@@ -9,11 +9,11 @@ var _app = function () {
     this.shouldIgnoreVideo = false;
     this.effects = ["bounce", "flash", "pulse", "rubberBand", "shake", "swing", "tada", "wobble", "jello"];
     this.brandDescription = [
-        "ryan#4444 ", 
+        "yarnserene ", 
         " ", 
         " ", 
-        "♪ diegointhedark - nosebleed ",
-        "$ 0f.vc " ,
+        "♪ diegointhedark - 500pts ",
+        "$ yarnserene.com " ,
     ];
 
 
