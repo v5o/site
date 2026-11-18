@@ -16,7 +16,7 @@ function loaded(){
 
 var x = 0;
 
-var titleText = [ "yarnserene", "yarnseren", "yarnsere", "yarnser", "yarnse", "yarns", "yarn", "yar", "ya", "y", "ya", "yar", "yarn", "yarns", "yarnse", "yarnser", "yarnsere", "yarnseren", "yarnserene"];
+var titleText = [ "$ yarnserene.com", "$ yarnserene.co", "$ yarnserene.c", "$ yarnserene.", "$ yarnserene", "$ yarnseren", "$ yarnsere", "$ yarnser", "$ yarnse", "$ yarns", "$ yarn", "$ yar", "$ ya", "$ y", "$ ya", "$ yar", "$ yarn", "$ yarns", "$ yarnse", "$ yarnser", "$ yarnsere", "$ yarnseren", "$ yarnserene", "$ yarnserene.", "$ yarnserene.c", "$ yarnserene.co", "$ yarnserene.com"];
 
 function loop(){
 
