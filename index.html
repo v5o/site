@@ -22,28 +22,51 @@
 
 <body>
     <div class="background" aria-hidden="true">
-        <video id="background" autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback></video>
+        <video id="background" autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback></video>
         <script>
             // Playlist is generated from the /videos folder at deploy time (scripts/build.mjs).
-            // Each reload plays the next video in the list.
+            // A random video plays on each visit, and when it ends another random
+            // one starts (never the same one twice in a row).
             (function () {
                 var list = /*__VIDEOS__*/[];
                 if (!list.length) list = [{ title: "diegointhedark - 500pts", src: "videos/diegointhedark%20-%20500pts.mp4", type: "video/mp4", poster: "videos/diegointhedark%20-%20500pts.jpg" }];
-                var i = 0;
-                try {
-                    var last = parseInt(localStorage.getItem("ys-video") || "-1", 10);
-                    i = isNaN(last) ? 0 : (last + 1) % list.length;
-                    localStorage.setItem("ys-video", i);
-                } catch (e) { i = Math.floor(Math.random() * list.length); }
-                var v = list[i], el = document.getElementById("background");
-                if (v.poster) {
-                    el.poster = v.poster;
-                    el.parentNode.style.backgroundImage = "url(\"" + v.poster + "\")";
+                var el = document.getElementById("background");
+                var current = -1;
+                function pickRandom(exclude) {
+                    if (list.length < 2) return 0;
+                    var i;
+                    do { i = Math.floor(Math.random() * list.length); } while (i === exclude);
+                    return i;
                 }
-                var s = document.createElement("source");
-                s.src = v.src; s.type = v.type || "video/mp4";
-                el.appendChild(s);
-                window.currentVideo = v;
+                function load(i) {
+                    current = i;
+                    var v = list[i];
+                    if (v.poster) {
+                        el.poster = v.poster;
+                        el.parentNode.style.backgroundImage = "url(\"" + v.poster + "\")";
+                    } else {
+                        el.removeAttribute("poster");
+                    }
+                    while (el.firstChild) el.removeChild(el.firstChild);
+                    var s = document.createElement("source");
+                    s.src = v.src; s.type = v.type || "video/mp4";
+                    el.appendChild(s);
+                    window.currentVideo = v;
+                    try { localStorage.setItem("ys-video", i); } catch (e) {}
+                }
+                var last = -1;
+                try { last = parseInt(localStorage.getItem("ys-video") || "-1", 10); } catch (e) {}
+                load(pickRandom(isNaN(last) ? -1 : last));
+                // A single video just loops; otherwise move on to a random next one.
+                el.loop = list.length < 2;
+                window.playNextVideo = function () {
+                    load(pickRandom(current));
+                    el.load();
+                    var p = el.play();
+                    if (p && p.catch) p.catch(function () {});
+                    document.dispatchEvent(new CustomEvent("videochange", { detail: window.currentVideo }));
+                };
+                el.addEventListener("ended", function () { if (!el.loop) window.playNextVideo(); });
             })();
         </script>
         <div id="shade"></div>
