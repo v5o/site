@@ -118,6 +118,11 @@
     // Typing tagline
     var song = (window.currentVideo && window.currentVideo.title) || "diegointhedark - 500pts";
     var lines = ["$ yarnserene.com", "♪ " + song];
+    // Keep the "now playing" line in sync when the next random video starts.
+    document.addEventListener("videochange", function (e) {
+        if (e.detail && e.detail.title) lines[1] = "♪ " + e.detail.title;
+        if (li === 1) ci = Math.min(ci, lines[1].length);
+    });
     var li = 0, ci = lines[0].length, deleting = true;
     function tick() {
         var text = lines[li];
